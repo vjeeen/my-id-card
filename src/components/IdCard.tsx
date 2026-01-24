@@ -103,8 +103,8 @@ export default function IdCard() {
           onClick={() => { setIsOpen(false); setIsFlipped(false); }}
         />
 
-        <div className={`absolute bottom-0 left-0 right-0 w-full bg-white rounded-t-[2.5rem] transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]  ${isOpen ? 'translate-y-0' : 'translate-y-full'}`} 
-             style={{ height: '52vh' }}>
+        <div className={`absolute bottom-0 left-0 right-0 w-full bg-white rounded-lg transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]  ${isOpen ? 'translate-y-0' : 'translate-y-full'}`} 
+             style={{ height: '48vh' }}>
           
           <div className="w-12 h-1.5 bg-gray-200 rounded-full mx-auto my-4" />
 
@@ -136,11 +136,11 @@ export default function IdCard() {
                 </div>
               </div>
             </div>
-            <div className="w-full max-w-[340px] space-y-3 px-2">
+            <div className="w-full max-w-[370px] space-y-3 px-2">
               <button className="w-full py-3.5 text-[14px] text-white font-semibold bg-blue-600 rounded-lg shadow-md active:scale-[0.98] transition-all">
                 Лавлагаа авах
               </button> 
-              <button className="w-full py-3.5 text-[14px] text-blue-600 font-semibold bg-blue-50 rounded-lg border border-blue-100 active:scale-[0.98] transition-all">
+              <button className="w-full py-3.5 text-[14px] text-blue-600 font-semibold bg-blue-100 rounded-lg active:scale-[0.98] transition-all">
                 Дахин захиалах
               </button>
             </div>
