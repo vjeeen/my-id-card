@@ -71,7 +71,7 @@ export default function IdCard() {
 
           >
 
-            <span className={`inline-block h-4 w-10 transform rounded-xl bg-white transition-transform ${isDocumentsVisible ? 'translate-x-5' : 'translate-x-1'}`} />
+            <span className={`inline-block h-4 w-6 transform rounded-xl bg-white transition-transform ${isDocumentsVisible ? 'translate-x-5' : 'translate-x-1'}`} />
 
           </button>
         </div>
