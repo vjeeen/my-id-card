@@ -136,8 +136,11 @@ export default function IdCard() {
                 </div>
               </div>
             </div>
-            <div className="text-[12px] text-white font-medium bg-blue-600 px-4 py-2 rounded-xl border border-blue-100">
-              Үнэмлэх дээр дарж эргүүлнэ үү
+            <div className="text-[12px] text-white font-medium bg-blue-600 px-8 py-2 rounded-sm border border-blue-100">
+              Лавлагаа авах
+            </div>
+            <div className="text-[12px] text-blue600 font-medium bg-blue-300 px-8 py-2 rounded-sm border border-blue-100">
+              Дахин захиалах
             </div>
           </div>
         </div>
