@@ -136,10 +136,10 @@ export default function IdCard() {
                 </div>
               </div>
             </div>
-            <div className="text-[12px] text-white font-medium bg-blue-600 px-15 py-2 rounded-sm ">
+            <div className="text-[12px] text-white font-medium bg-blue-600 px-3 py-2 rounded-sm ">
               Лавлагаа авах
             </div>
-            <div className="text-[12px] text-blue-600 font-medium bg-blue-100 px-8 py-2 rounded-sm ">
+            <div className="text-[12px] text-blue-600 font-medium bg-blue-100 px-3 py-2 rounded-sm ">
               Дахин захиалах
             </div>
           </div>
