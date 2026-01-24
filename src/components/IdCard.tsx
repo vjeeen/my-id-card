@@ -136,7 +136,6 @@ export default function IdCard() {
                 </div>
               </div>
             </div>
-            <div className="bg-white px-2 py-2 rounded-2xl shadow-sm border border-gray-100 flex items-center justify-between mb-6">
             <div className="text-[12px] text-white font-medium bg-blue-600 px-2 py-2 rounded-2xl mb-6">
               Лавлагаа авах
             </div>
