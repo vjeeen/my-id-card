@@ -67,11 +67,11 @@ export default function IdCard() {
 
             onClick={() => setIsDocumentsVisible(!isDocumentsVisible)}
 
-            className={`relative inline-flex h-6 w-13 items-center rounded-xl transition-colors ${isDocumentsVisible ? 'bg-blue-600' : 'bg-gray-300'}`}
+            className={`relative inline-flex h-[22px] w-[52px] items-center rounded-xl transition-colors ${isDocumentsVisible ? 'bg-blue-600' : 'bg-gray-300'}`}
 
           >
 
-            <span className={`inline-block h-5 w-7 transform rounded-xl bg-white transition-transform ${isDocumentsVisible ? 'translate-x-5' : 'translate-x-1'}`} />
+            <span className={`inline-block h-[18px] w-[30px] transform rounded-xl bg-white transition-transform ${isDocumentsVisible ? 'translate-x-5' : 'translate-x-1'}`} />
 
           </button>
         </div>
