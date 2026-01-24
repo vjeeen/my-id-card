@@ -78,10 +78,10 @@ export default function IdCard() {
 
         {/* КАРТ ХЭСЭГ (Тогглоос салгаж гаргаснаар томорно) */}
         {isDocumentsVisible && (
-          <div className="bg-white py-3 px-1 rounded-2xl shadow border border-gray-100 mb-6 transition-all duration-500 overflow-hidden">
+          <div className="bg-white py-3 px-1 rounded-2xl shadow  mb-6 transition-all duration-500 overflow-hidden">
             <div
               onClick={() => setIsOpen(true)}
-              className="relative w-full aspect-[1.58/1] rounded-2xl overflow-hidden  cursor-pointer transition-transform active:scale-[0.98] border border-gray-200"
+              className="relative w-full aspect-[1.58/1] rounded-2xl overflow-hidden  cursor-pointer transition-transform active:scale-[0.98]"
             >
               <img src="/card-front.svg" className="absolute inset-0 w-full h-full object-cover" alt="ID Preview" />
               <div className="relative z-10 p-4 h-full pointer-events-none text-black font-bold">
@@ -136,10 +136,11 @@ export default function IdCard() {
                 </div>
               </div>
             </div>
-            <div className="text-[12px] text-white font-medium bg-blue-600 px-1 py-2 rounded-sm ">
+            <div className="bg-white px-2 py-2 rounded-2xl shadow-sm border border-gray-100 flex items-center justify-between mb-6">
+            <div className="text-[12px] text-white font-medium bg-blue-600 px-2 py-2 rounded-2xl mb-6">
               Лавлагаа авах
             </div>
-            <div className="text-[12px] text-blue-600 font-medium bg-blue-100 px-3 py-2 rounded-sm ">
+            <div className="text-[12px] text-blue-600 font-medium bg-blue-100 px-2 py-2 rounded-sm ">
               Дахин захиалах
             </div>
           </div>
