@@ -136,11 +136,13 @@ export default function IdCard() {
                 </div>
               </div>
             </div>
-            <div className="text-[12px] text-white font-medium bg-blue-600 h-18px w-30 rounded-xm mb-4">
-              Лавлагаа авах
-            </div>
-            <div className="text-[12px] text-blue-600 font-medium bg-blue-100 px-2 py-2 rounded-xm ">
-              Дахин захиалах
+            <div className="w-full max-w-[340px] space-y-3 px-2">
+              <button className="w-full py-3.5 text-[14px] text-white font-semibold bg-blue-600 rounded-lg shadow-md active:scale-[0.98] transition-all">
+                Лавлагаа авах
+              </button> 
+              <button className="w-full py-3.5 text-[14px] text-blue-600 font-semibold bg-blue-50 rounded-lg border border-blue-100 active:scale-[0.98] transition-all">
+                Дахин захиалах
+              </button>
             </div>
           </div>
         </div>
