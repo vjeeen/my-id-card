@@ -9,15 +9,15 @@ const inter = Inter({
 
 interface UserInfo {
   surname: string; lastName: string; firstName: string;
-  regNum: string; gender: string; birthPlace: string;
-  address: string; photo: string;
+  regNum: string; gender: string; dateOfBirth: string;
+  dateOfIssue: string; dateOfExpiry: string; photo: string;
 }
 
 export default function IdCard() {
   const [userInfo, setUserInfo] = useState<UserInfo>({
-    surname: "БОРЖИГИН", lastName: "БАТ-ЭРДЭНЭ", firstName: "ТЭМҮҮЛЭН",
-    regNum: "АА99010112", gender: "ЭРЭГТЭЙ", birthPlace: "УЛААНБААТАР ХОТ",
-    address: "БЗД, 16-Р ХОРОО, 45-Р БАЙР, 201 ТООТ",
+    surname: "Боржигин", lastName: "Хашсансар", firstName: "Ану-Үжин",
+    regNum: "596468675497", gender: "Эмэгтэй", dateOfBirth: "2005/01/15",
+    dateOfIssue: "2021-01/10", dateOfExpiry: "2030/01/10",
     photo: "https://api.dicebear.com/7.x/avataaars/svg?seed=Felix"
   });
 
@@ -83,12 +83,14 @@ export default function IdCard() {
               className="relative w-full aspect-[1.58/1] rounded-2xl overflow-hidden  cursor-pointer transition-transform active:scale-[0.98]"
             >
               <img src="/card-front.svg" className="absolute inset-0 w-full h-full object-cover" alt="ID Preview" />
-              <div className="relative z-10 p-4 h-full pointer-events-none text-black font-bold">
+              <div className="relative z-10 p-4 h-full pointer-events-none text-black">
                 <img src={userInfo.photo} className="absolute object-cover rounded-sm" style={{ top: "25%", left: "5%", width: "23%", height: "46%" }} alt="Profile" />
-                <div className="absolute text-[10px]" style={{ top: "28%", left: "31%" }}>{userInfo.surname}</div>
-                <div className="absolute text-[10px]" style={{ top: "42%", left: "31%" }}>{userInfo.lastName}</div>
-                <div className="absolute text-[10px] uppercase" style={{ top: "56%", left: "31%" }}>{userInfo.firstName}</div>
-                <div className="absolute text-[11px] font-mono" style={{ bottom: "11%", left: "31%" }}>{userInfo.regNum}</div>
+                <div className="absolute z-10" style={{top: "27%", left: "30%"}}>{userInfo.surname}</div>
+                <div className="absolute z-10" style={{ top: "42%", left: "30%" }}>{userInfo.lastName}</div>
+                <div className="absolute z-10" style={{ top: "55%", left: "30%" }}>{userInfo.firstName}</div>
+                <div className="absolute z-10" style={{ top: "89%", left: "30%" }}>{userInfo.regNum}</div>
+                <div className="absolute z-10" style={{ top: "66%", left: "30%" }}>{userInfo.gender}</div>
+                <div className="absolute z-10" style={{ top: "80%", left: "30%" }}>{userInfo.dateOfBirth}</div>
               </div>
             </div>
           </div> 
@@ -116,17 +118,23 @@ export default function IdCard() {
                 {/* FRONT */}
                 <div className="absolute inset-0 w-full h-full [backface-visibility:hidden] rounded-xl overflow-hidden">
                   <img src="/card-front.svg" className="absolute inset-0 w-full h-full object-cover" alt="ID Front" />
-                  <div className="relative z-10 p-3 h-full text-black font-bold">
-                     <img src={userInfo.photo} className="absolute object-cover rounded-sm" style={{ top: "25%", left: "5%", width: "23%", height: "46%" }} alt="Profile" />
-                     <div className="absolute text-[8.5px]" style={{ top: "28%", left: "31%" }}>{userInfo.surname}</div>
-                     <div className="absolute text-[8.5px]" style={{ top: "42%", left: "31%" }}>{userInfo.lastName}</div>
-                     <div className="absolute text-[8.5px] uppercase" style={{ top: "56%", left: "31%" }}>{userInfo.firstName}</div>
-                     <div className="absolute text-[10.5px] font-mono" style={{ bottom: "11%", left: "31%" }}>{userInfo.regNum}</div>
+                  <div className="relative z-10 p-3 h-full text-black">
+                    <img src={userInfo.photo} className="absolute object-cover rounded-sm" style={{ top: "25%", left: "5%", width: "23%", height: "46%" }} alt="Profile" />
+                    <div className="absolute z-10" style={{ top: "27%", left: "30%" }}>{userInfo.surname}</div>
+                    <div className="absolute z-10" style={{ top: "42%", left: "30%" }}>{userInfo.lastName}</div>
+                    <div className="absolute z-10" style={{ top: "55%", left: "30%" }}>{userInfo.firstName}</div>
+                    <div className="absolute z-10" style={{ top: "89%", left: "30%" }}>{userInfo.regNum}</div>
+                    <div className="absolute z-10" style={{ top: "66%", left: "30%" }}>{userInfo.gender}</div>
+                    <div className="absolute z-10" style={{ top: "80%", left: "30%" }}>{userInfo.dateOfBirth}</div>
                   </div>
                 </div>
                 {/* BACK */}
                 <div className="absolute inset-0 w-full h-full [backface-visibility:hidden] [transform:rotateY(180deg)] rounded-xl overflow-hidden bg-white">
                   <img src="/card-back.svg" className="absolute inset-0 w-full h-full object-cover" alt="ID Back" />
+                  <div className="relative z-10 p-3 h-full text-black">
+                    <div className="absolute z-10" style={{ top: "40%", left: "5%" }}>{userInfo.dateOfIssue}</div>
+                    <div className="absolute z-10" style={{ top: "55%", left: "5%" }}>{userInfo.dateOfExpiry}</div>
+                  </div>
                 </div>
               </div>
             </div>
