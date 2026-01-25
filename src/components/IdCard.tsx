@@ -24,8 +24,6 @@ export default function IdCard() {
   const [isDocumentsVisible, setIsDocumentsVisible] = useState(true);
   const [isFlipped, setIsFlipped] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
-  
-  // Шинээр нэмэгдсэн төлөвүүд
   const [isEditing, setIsEditing] = useState(false);
   const [tempInfo, setTempInfo] = useState<UserInfo>(userInfo);
 
@@ -46,7 +44,6 @@ export default function IdCard() {
 
   return (
     <div className={`${inter.className} w-full min-h-screen bg-gradient-to-b from-[#E8EFFF] via-[#F3F6FF] to-[#F0F2F5] font-sans pb-10 overflow-x-hidden`}>
-      {/* 1. ҮНДСЭН CONTAINER */}
       <div className="px-3 pt-6 w-full mx-auto">
         
         {/* HEADER */}
@@ -66,12 +63,12 @@ export default function IdCard() {
           </div>
         </div>
 
-        {/* SECTION: ТОГГЛ */}
+        {/* SECTION: TOGGLE */}
         <div className="bg-white px-3 py-3 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between mb-6">
-          <div className="flex items-center space-x-2 ">
+          <div className="flex items-center space-x-2">
             <div className="w-8 h-8 bg-gray-100 rounded-xl flex items-center justify-center text-gray-500">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-                <path d="M3.70711 2.29289C3.31658 1.90237 2.68342 1.90237 2.29289 2.29289C1.90237 2.68342 1.90237 3.31658 2.29289 3.70711L5.35759 6.7718C5.35065 6.77731 5.34371 6.78282 5.33678 6.78834C3.52261 8.23329 2.1265 10.0699 1.32918 11.6646C1.22361 11.8757 1.22361 12.1243 1.32918 12.3354C2.1265 13.9301 3.52261 15.7667 5.33678 17.2117C7.15245 18.6578 9.43736 19.75 12 19.75C13.8138 19.75 15.4885 19.2029 16.9561 18.3703L20.2929 21.7071C20.6834 22.0976 21.3166 22.0976 21.7071 21.7071C22.0976 21.3166 22.0976 20.6834 21.7071 20.2929L3.70711 2.29289ZM13.8156 15.2299L8.77015 10.1844C8.44009 10.736 8.25 11.3817 8.25 12.0711C8.25 14.1029 9.89711 15.75 11.9289 15.75C12.6183 15.75 13.264 15.5599 13.8156 15.2299ZM19.7703 16.2348C21.0483 14.9905 22.0444 13.5883 22.6708 12.3354C22.7764 12.1243 22.7764 11.8757 22.6708 11.6646C21.8735 10.0699 20.4774 8.23329 18.6632 6.78834C16.8476 5.3422 14.5626 4.25 12 4.25C10.7524 4.25 9.57069 4.50885 8.47686 4.94138L19.7703 16.2348Z" fill="currentColor" fillRule="evenodd" />
+                <path d="M3.70711 2.29289C3.31658 1.90237 2.68342 1.90237 2.29289 2.29289C1.90237 2.68342 1.90237 3.31658 2.29289 3.70711L5.35759 6.7718C5.35065 6.77731 5.34371 6.78282 5.33678 6.78834C3.52261 8.23329 2.1265 10.0699 1.32918 11.6646C1.22361 11.8757 1.22361 12.1243 1.32918 12.3354C2.1265 13.9301 3.52261 15.7667 5.33678 17.2117C7.15245 18.6578 9.43736 19.75 12 19.75C13.8138 19.75 15.4885 19.2029 16.9561 18.3703L20.2929 21.7071C20.6834 22.0976 21.3166 22.0976 21.7071 21.7071C22.0976 21.3166 22.0976 20.6834 21.7071 20.2929L3.70711 2.29289Z" fill="currentColor" fillRule="evenodd" />
               </svg>
             </div>
             <span className="text-gray-700 text-xs">Бичиг баримтын мэдээлэл</span>
@@ -84,9 +81,9 @@ export default function IdCard() {
           </button>
         </div>
 
-        {/* КАРТ ХЭСЭГ */}
+        {/* CARD PREVIEW */}
         {isDocumentsVisible && (
-          <div className="bg-white py-3 px-0.5 rounded-2xl shadow mb-6 transition-all duration-500 overflow-hidden">
+          <div className="bg-white py-3 px-0.5 rounded-2xl shadow mb-6 overflow-hidden">
             <div
               onClick={() => setIsOpen(true)}
               className="relative w-full aspect-[1.58/1] rounded-2xl overflow-hidden cursor-pointer transition-transform active:scale-[0.98]"
@@ -106,7 +103,7 @@ export default function IdCard() {
         )}
       </div>
 
-      {/* 2. BOTTOM SHEET */}
+      {/* BOTTOM SHEET */}
       <div className={`fixed inset-0 z-50 transition-all duration-300 ${isOpen ? 'visible' : 'invisible'}`}>
         <div 
           className={`absolute inset-0 bg-black/50 transition-opacity duration-300 ${isOpen ? 'opacity-100' : 'opacity-0'}`}
@@ -120,44 +117,28 @@ export default function IdCard() {
 
           <div className="px-4 flex flex-col items-center h-full">
             {isEditing ? (
-              /* ЗАСВАРЛАХ ФОРМ */
+              /* EDIT MODE */
               <div className="w-full px-2 pt-4 space-y-4 overflow-y-auto pb-10">
                 <h3 className="text-lg font-bold text-gray-800 text-center mb-4">Мэдээлэл засах</h3>
                 <div className="space-y-3">
-                  <div className="space-y-1">
-                    <label className="text-xs text-gray-500 ml-1">Овог</label>
-                    <input className="w-full p-3 bg-gray-50 border border-gray-100 rounded-xl text-sm" value={tempInfo.surname} onChange={e => setTempInfo({...tempInfo, surname: e.target.value})} />
-                  </div>
-                  <div className="space-y-1">
-                    <label className="text-xs text-gray-500 ml-1">Эцэг/Эхийн нэр</label>
-                    <input className="w-full p-3 bg-gray-50 border border-gray-100 rounded-xl text-sm" value={tempInfo.lastName} onChange={e => setTempInfo({...tempInfo, lastName: e.target.value})} />
-                  </div>
-                  <div className="space-y-1">
-                    <label className="text-xs text-gray-500 ml-1">Өөрийн нэр</label>
-                    <input className="w-full p-3 bg-gray-50 border border-gray-100 rounded-xl text-sm" value={tempInfo.firstName} onChange={e => setTempInfo({...tempInfo, firstName: e.target.value})} />
-                  </div>
-                  <div className="space-y-1">
-                    <label className="text-xs text-gray-500 ml-1">Регистр / Дугаар</label>
-                    <input className="w-full p-3 bg-gray-50 border border-gray-100 rounded-xl text-sm" value={tempInfo.regNum} onChange={e => setTempInfo({...tempInfo, regNum: e.target.value})} />
-                  </div>
-                  <div className="space-y-1">
-                    <label className="text-xs text-gray-500 ml-1">Зургийн URL</label>
-                    <input className="w-full p-3 bg-gray-50 border border-gray-100 rounded-xl text-sm" value={tempInfo.photo} onChange={e => setTempInfo({...tempInfo, photo: e.target.value})} />
-                  </div>
+                  <input className="w-full p-3 bg-gray-50 border rounded-xl text-sm" placeholder="Овог" value={tempInfo.surname} onChange={e => setTempInfo({...tempInfo, surname: e.target.value})} />
+                  <input className="w-full p-3 bg-gray-50 border rounded-xl text-sm" placeholder="Эцэг/Эх" value={tempInfo.lastName} onChange={e => setTempInfo({...tempInfo, lastName: e.target.value})} />
+                  <input className="w-full p-3 bg-gray-50 border rounded-xl text-sm" placeholder="Нэр" value={tempInfo.firstName} onChange={e => setTempInfo({...tempInfo, firstName: e.target.value})} />
+                  <input className="w-full p-3 bg-gray-50 border rounded-xl text-sm" placeholder="Регистр" value={tempInfo.regNum} onChange={e => setTempInfo({...tempInfo, regNum: e.target.value})} />
+                  <input className="w-full p-3 bg-gray-50 border rounded-xl text-sm" placeholder="Зургийн URL" value={tempInfo.photo} onChange={e => setTempInfo({...tempInfo, photo: e.target.value})} />
                 </div>
                 <div className="flex space-x-3 pt-4">
-                  <button onClick={() => setIsEditing(false)} className="flex-1 py-4 bg-gray-100 text-gray-600 font-bold rounded-2xl active:scale-95 transition-all">Цуцлах</button>
-                  <button onClick={handleSave} className="flex-1 py-4 bg-blue-600 text-white font-bold rounded-2xl active:scale-95 transition-all shadow-lg shadow-blue-200">Хадгалах</button>
+                  <button onClick={() => setIsEditing(false)} className="flex-1 py-4 bg-gray-100 font-bold rounded-2xl">Цуцлах</button>
+                  <button onClick={handleSave} className="flex-1 py-4 bg-blue-600 text-white font-bold rounded-2xl shadow-lg shadow-blue-200">Хадгалах</button>
                 </div>
               </div>
             ) : (
-              /* ҮНДСЭН КАРТ ХАРАГДАЦ */
+              /* NORMAL VIEW */
               <>
                 <div className="px-6 flex justify-center items-center mb-2 mt-3 h-7">
                    <h3 className="text-xs text-gray-800 font-medium">Иргэний үнэмлэх</h3>
                 </div>
-
-                <div className="w-full max-w-full aspect-[1.58/1] cursor-pointer [perspective:1200px] mb-6" onClick={() => setIsFlipped(!isFlipped)}>
+                <div className="w-full aspect-[1.58/1] cursor-pointer [perspective:1200px] mb-6" onClick={() => setIsFlipped(!isFlipped)}>
                   <div className={`relative w-full h-full transition-all duration-700 [transform-style:preserve-3d] ${isFlipped ? '[transform:rotateY(180deg)]' : ''}`}>
                     {/* FRONT */}
                     <div className="absolute inset-0 w-full h-full [backface-visibility:hidden] rounded-xl overflow-hidden bg-white shadow-lg">
@@ -182,17 +163,9 @@ export default function IdCard() {
                     </div>
                   </div>
                 </div>
-
                 <div className="w-full max-w-[370px] space-y-2 px-2">
-                  <button className="w-full py-4 text-[14px] text-white font-bold bg-blue-600 rounded-2xl shadow-md active:scale-[0.96] transition-all">
-                    Лавлагаа авах
-                  </button> 
-                  <button 
-                    onClick={() => { setIsEditing(true); setTempInfo(userInfo); }}
-                    className="w-full py-4 text-[14px] text-blue-600 font-bold bg-blue-50 rounded-2xl active:scale-[0.96] transition-all border border-blue-100"
-                  >
-                    Дахин захиалах (Засах)
-                  </button>
+                  <button className="w-full py-4 text-[14px] text-white font-bold bg-blue-600 rounded-2xl active:scale-[0.96]">Лавлагаа авах</button> 
+                  <button onClick={() => { setIsEditing(true); setTempInfo(userInfo); }} className="w-full py-4 text-[14px] text-blue-600 font-bold bg-blue-50 rounded-2xl active:scale-[0.96] border border-blue-100">Дахин захиалах (Засах)</button>
                 </div>
               </>
             )}
@@ -201,5 +174,4 @@ export default function IdCard() {
       </div>
     </div>
   );
-}
 }
