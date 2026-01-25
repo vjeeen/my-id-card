@@ -44,7 +44,7 @@ export default function IdCard() {
         setTempInfo({ ...tempInfo, photo: reader.result as string });
       };
       reader.readAsDataURL(file);
-   }
+    }
   };
   const handleSave = () => {
     setUserInfo(tempInfo);
