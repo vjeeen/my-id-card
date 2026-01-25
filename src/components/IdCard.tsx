@@ -37,7 +37,7 @@ export default function IdCard() {
       <div className="p-6 pt-12 max-w-md mx-auto">
         
         {/* HEADER */}
-        <div className="flex items-center justify-between mb-8 px">
+        <div className="flex items-center justify-between mb-5 px">
           <div className="flex-shrink-0 bg-white p-2.5 rounded-xl shadow-sm border border-gray-100 text-gray-800 active:scale-90 transition-all cursor-pointer">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
               <path d="M15 6L9 12.0001L15 18" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5"/>
@@ -56,7 +56,7 @@ export default function IdCard() {
         {/* SECTION: ТОГГЛ (Бичиг баримтын мэдээлэл) */}
         <div className="bg-white px-2 py-2 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between mb-6">
           <div className="flex items-center space-x-2 ">
-            <div className="w-10 h-10 bg-gray-100 rounded-xl flex items-center justify-center text-gray-500">
+            <div className="w-8 h-8 bg-gray-100 rounded-xl flex items-center justify-center text-gray-500">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
                 <path d="M3.70711 2.29289C3.31658 1.90237 2.68342 1.90237 2.29289 2.29289C1.90237 2.68342 1.90237 3.31658 2.29289 3.70711L5.35759 6.7718C5.35065 6.77731 5.34371 6.78282 5.33678 6.78834C3.52261 8.23329 2.1265 10.0699 1.32918 11.6646C1.22361 11.8757 1.22361 12.1243 1.32918 12.3354C2.1265 13.9301 3.52261 15.7667 5.33678 17.2117C7.15245 18.6578 9.43736 19.75 12 19.75C13.8138 19.75 15.4885 19.2029 16.9561 18.3703L20.2929 21.7071C20.6834 22.0976 21.3166 22.0976 21.7071 21.7071C22.0976 21.3166 22.0976 20.6834 21.7071 20.2929L3.70711 2.29289ZM13.8156 15.2299L8.77015 10.1844C8.44009 10.736 8.25 11.3817 8.25 12.0711C8.25 14.1029 9.89711 15.75 11.9289 15.75C12.6183 15.75 13.264 15.5599 13.8156 15.2299ZM19.7703 16.2348C21.0483 14.9905 22.0444 13.5883 22.6708 12.3354C22.7764 12.1243 22.7764 11.8757 22.6708 11.6646C21.8735 10.0699 20.4774 8.23329 18.6632 6.78834C16.8476 5.3422 14.5626 4.25 12 4.25C10.7524 4.25 9.57069 4.50885 8.47686 4.94138L19.7703 16.2348Z" fill="currentColor" fillRule="evenodd" />
               </svg>
