@@ -169,7 +169,6 @@ export default function IdCard() {
                   <button onClick={() => setIsEditing(false)} className="flex-1 py-4 bg-gray-100 font-bold rounded-2xl">Цуцлах</button>
                   <button onClick={handleSave} className="flex-1 py-4 bg-blue-600 text-white font-bold rounded-2xl shadow-lg shadow-blue-200">Хадгалах</button>
                 </div>
-              </div>
             ) : (
               /* NORMAL VIEW */
               <>
