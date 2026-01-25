@@ -17,18 +17,32 @@ export default function IdCard() {
   const [userInfo, setUserInfo] = useState<UserInfo>({
     surname: "Боржигин", lastName: "Хашсансар", firstName: "Ану-Үжин",
     regNum: "596468675497", gender: "Эмэгтэй", dateOfBirth: "2005/01/15",
-    dateOfIssue: "2021-01/10", dateOfExpiry: "2030/01/10",
+    dateOfIssue: "2021/01/10", dateOfExpiry: "2030/01/10",
     photo: "https://api.dicebear.com/7.x/avataaars/svg?seed=Felix"
   });
 
   const [isDocumentsVisible, setIsDocumentsVisible] = useState(true);
   const [isFlipped, setIsFlipped] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  
+  // Шинээр нэмэгдсэн төлөвүүд
+  const [isEditing, setIsEditing] = useState(false);
+  const [tempInfo, setTempInfo] = useState<UserInfo>(userInfo);
 
   useEffect(() => {
     const saved = localStorage.getItem('id-data');
-    if (saved) setUserInfo(JSON.parse(saved));
+    if (saved) {
+      const parsed = JSON.parse(saved);
+      setUserInfo(parsed);
+      setTempInfo(parsed);
+    }
   }, []);
+
+  const handleSave = () => {
+    setUserInfo(tempInfo);
+    localStorage.setItem('id-data', JSON.stringify(tempInfo));
+    setIsEditing(false);
+  };
 
   return (
     <div className={`${inter.className} w-full min-h-screen bg-gradient-to-b from-[#E8EFFF] via-[#F3F6FF] to-[#F0F2F5] font-sans pb-10 overflow-x-hidden`}>
@@ -52,7 +66,7 @@ export default function IdCard() {
           </div>
         </div>
 
-        {/* SECTION: ТОГГЛ (Бичиг баримтын мэдээлэл) */}
+        {/* SECTION: ТОГГЛ */}
         <div className="bg-white px-3 py-3 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between mb-6">
           <div className="flex items-center space-x-2 ">
             <div className="w-8 h-8 bg-gray-100 rounded-xl flex items-center justify-center text-gray-500">
@@ -63,92 +77,129 @@ export default function IdCard() {
             <span className="text-gray-700 text-xs">Бичиг баримтын мэдээлэл</span>
           </div>
           <button
-
             onClick={() => setIsDocumentsVisible(!isDocumentsVisible)}
-
             className={`relative inline-flex h-[22px] w-[52px] items-center rounded-xl transition-colors ${isDocumentsVisible ? 'bg-blue-600' : 'bg-gray-300'}`}
-
           >
-
             <span className={`inline-block h-[18px] w-[30px] transform rounded-xl bg-white transition-transform ${isDocumentsVisible ? 'translate-x-5' : 'translate-x-1'}`} />
-
           </button>
         </div>
 
-        {/* КАРТ ХЭСЭГ (Тогглоос салгаж гаргаснаар томорно) */}
+        {/* КАРТ ХЭСЭГ */}
         {isDocumentsVisible && (
-          <div className="bg-white py-3 px-0.5 rounded-2xl shadow  mb-6 transition-all duration-500 overflow-hidden">
+          <div className="bg-white py-3 px-0.5 rounded-2xl shadow mb-6 transition-all duration-500 overflow-hidden">
             <div
               onClick={() => setIsOpen(true)}
-              className="relative w-full aspect-[1.58/1] rounded-2xl overflow-hidden  cursor-pointer transition-transform active:scale-[0.98]"
+              className="relative w-full aspect-[1.58/1] rounded-2xl overflow-hidden cursor-pointer transition-transform active:scale-[0.98]"
             >
               <img src="/card-front.svg" className="absolute inset-0 w-full h-full object-cover" alt="ID Preview" />
               <div className="relative z-10 p-4 h-full pointer-events-none text-black">
                 <img src={userInfo.photo} className="absolute object-cover rounded-sm" style={{ top: "25%", left: "5%", width: "23%", height: "46%" }} alt="Profile" />
-                <div className="absolute z-10" style={{top: "27%", left: "30%"}}>{userInfo.surname}</div>
-                <div className="absolute z-10" style={{ top: "42%", left: "30%" }}>{userInfo.lastName}</div>
-                <div className="absolute z-10" style={{ top: "55%", left: "30%" }}>{userInfo.firstName}</div>
-                <div className="absolute z-10" style={{ top: "89%", left: "30%" }}>{userInfo.regNum}</div>
-                <div className="absolute z-10" style={{ top: "66%", left: "30%" }}>{userInfo.gender}</div>
-                <div className="absolute z-10" style={{ top: "80%", left: "30%" }}>{userInfo.dateOfBirth}</div>
+                <div className="absolute text-[9px] font-semibold" style={{top: "27%", left: "30%"}}>{userInfo.surname}</div>
+                <div className="absolute text-[9px] font-semibold" style={{ top: "42%", left: "30%" }}>{userInfo.lastName}</div>
+                <div className="absolute text-[9px] font-semibold" style={{ top: "55%", left: "30%" }}>{userInfo.firstName}</div>
+                <div className="absolute text-[9px] font-bold font-mono" style={{ top: "89%", left: "30%" }}>{userInfo.regNum}</div>
+                <div className="absolute text-[9px]" style={{ top: "66%", left: "30%" }}>{userInfo.gender}</div>
+                <div className="absolute text-[9px]" style={{ top: "80%", left: "30%" }}>{userInfo.dateOfBirth}</div>
               </div>
             </div>
           </div> 
         )}
       </div>
-      {/* 2. BOTTOM SHEET - DETAIL VIEW */}
+
+      {/* 2. BOTTOM SHEET */}
       <div className={`fixed inset-0 z-50 transition-all duration-300 ${isOpen ? 'visible' : 'invisible'}`}>
         <div 
           className={`absolute inset-0 bg-black/50 transition-opacity duration-300 ${isOpen ? 'opacity-100' : 'opacity-0'}`}
-          onClick={() => { setIsOpen(false); setIsFlipped(false); }}
+          onClick={() => { setIsOpen(false); setIsFlipped(false); setIsEditing(false); }}
         />
 
-        <div className={`absolute bottom-0 left-0 right-0 w-full bg-white rounded-xl transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]  ${isOpen ? 'translate-y-0' : 'translate-y-full'}`} 
-             style={{ height: '50vh' }}>
+        <div className={`absolute bottom-0 left-0 right-0 w-full bg-white rounded-t-3xl transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] ${isOpen ? 'translate-y-0' : 'translate-y-full'}`} 
+             style={{ height: isEditing ? '85vh' : '55vh' }}>
           
           <div className="w-12 h-1 bg-gray-200 rounded-xl mx-auto mb-1 mt-3" />
 
-          <div className="px-6 flex justify-center items-center mb-2 mt-3 h-7">
-             <h3 className="text-xs text-gray-800">Иргэний үнэмлэх</h3>
-          </div>
-
-          <div className="px-4 flex flex-col items-center">
-            <div className="w-full max-w-full aspect-[1.58/1] cursor-pointer [perspective:1200px] mb-3 mt-0.5" onClick={() => setIsFlipped(!isFlipped)}>
-              <div className={`relative w-full h-full transition-all duration-700 [transform-style:preserve-3d] ${isFlipped ? '[transform:rotateY(180deg)]' : ''}`}>
-                {/* FRONT */}
-                <div className="absolute inset-0 w-full h-full [backface-visibility:hidden] rounded-xl overflow-hidden">
-                  <img src="/card-front.svg" className="absolute inset-0 w-full h-full object-cover" alt="ID Front" />
-                  <div className="relative z-10 p-3 h-full text-black">
-                    <img src={userInfo.photo} className="absolute object-cover rounded-sm" style={{ top: "25%", left: "5%", width: "23%", height: "46%" }} alt="Profile" />
-                    <div className="absolute z-10" style={{ top: "27%", left: "30%" }}>{userInfo.surname}</div>
-                    <div className="absolute z-10" style={{ top: "42%", left: "30%" }}>{userInfo.lastName}</div>
-                    <div className="absolute z-10" style={{ top: "55%", left: "30%" }}>{userInfo.firstName}</div>
-                    <div className="absolute z-10" style={{ top: "89%", left: "30%" }}>{userInfo.regNum}</div>
-                    <div className="absolute z-10" style={{ top: "66%", left: "30%" }}>{userInfo.gender}</div>
-                    <div className="absolute z-10" style={{ top: "80%", left: "30%" }}>{userInfo.dateOfBirth}</div>
+          <div className="px-4 flex flex-col items-center h-full">
+            {isEditing ? (
+              /* ЗАСВАРЛАХ ФОРМ */
+              <div className="w-full px-2 pt-4 space-y-4 overflow-y-auto pb-10">
+                <h3 className="text-lg font-bold text-gray-800 text-center mb-4">Мэдээлэл засах</h3>
+                <div className="space-y-3">
+                  <div className="space-y-1">
+                    <label className="text-xs text-gray-500 ml-1">Овог</label>
+                    <input className="w-full p-3 bg-gray-50 border border-gray-100 rounded-xl text-sm" value={tempInfo.surname} onChange={e => setTempInfo({...tempInfo, surname: e.target.value})} />
+                  </div>
+                  <div className="space-y-1">
+                    <label className="text-xs text-gray-500 ml-1">Эцэг/Эхийн нэр</label>
+                    <input className="w-full p-3 bg-gray-50 border border-gray-100 rounded-xl text-sm" value={tempInfo.lastName} onChange={e => setTempInfo({...tempInfo, lastName: e.target.value})} />
+                  </div>
+                  <div className="space-y-1">
+                    <label className="text-xs text-gray-500 ml-1">Өөрийн нэр</label>
+                    <input className="w-full p-3 bg-gray-50 border border-gray-100 rounded-xl text-sm" value={tempInfo.firstName} onChange={e => setTempInfo({...tempInfo, firstName: e.target.value})} />
+                  </div>
+                  <div className="space-y-1">
+                    <label className="text-xs text-gray-500 ml-1">Регистр / Дугаар</label>
+                    <input className="w-full p-3 bg-gray-50 border border-gray-100 rounded-xl text-sm" value={tempInfo.regNum} onChange={e => setTempInfo({...tempInfo, regNum: e.target.value})} />
+                  </div>
+                  <div className="space-y-1">
+                    <label className="text-xs text-gray-500 ml-1">Зургийн URL</label>
+                    <input className="w-full p-3 bg-gray-50 border border-gray-100 rounded-xl text-sm" value={tempInfo.photo} onChange={e => setTempInfo({...tempInfo, photo: e.target.value})} />
                   </div>
                 </div>
-                {/* BACK */}
-                <div className="absolute inset-0 w-full h-full [backface-visibility:hidden] [transform:rotateY(180deg)] rounded-xl overflow-hidden bg-white">
-                  <img src="/card-back.svg" className="absolute inset-0 w-full h-full object-cover" alt="ID Back" />
-                  <div className="relative z-10 p-3 h-full text-black">
-                    <div className="absolute z-10" style={{ top: "40%", left: "5%" }}>{userInfo.dateOfIssue}</div>
-                    <div className="absolute z-10" style={{ top: "55%", left: "5%" }}>{userInfo.dateOfExpiry}</div>
-                  </div>
+                <div className="flex space-x-3 pt-4">
+                  <button onClick={() => setIsEditing(false)} className="flex-1 py-4 bg-gray-100 text-gray-600 font-bold rounded-2xl active:scale-95 transition-all">Цуцлах</button>
+                  <button onClick={handleSave} className="flex-1 py-4 bg-blue-600 text-white font-bold rounded-2xl active:scale-95 transition-all shadow-lg shadow-blue-200">Хадгалах</button>
                 </div>
               </div>
-            </div>
-            <div className="w-full max-w-[370px] space-y-2 px-2">
-              <button className="w-full py-3.5 text-[14px] text-white font-semibold bg-blue-600 rounded-lg shadow-md active:scale-[0.96] transition-all">
-                Лавлагаа авах
-              </button> 
-              <button className="w-full py-3.5 text-[14px] text-blue-600 font-semibold bg-blue-100 rounded-lg active:scale-[0.96] transition-all">
-                Дахин захиалах
-              </button>
-            </div>
+            ) : (
+              /* ҮНДСЭН КАРТ ХАРАГДАЦ */
+              <>
+                <div className="px-6 flex justify-center items-center mb-2 mt-3 h-7">
+                   <h3 className="text-xs text-gray-800 font-medium">Иргэний үнэмлэх</h3>
+                </div>
+
+                <div className="w-full max-w-full aspect-[1.58/1] cursor-pointer [perspective:1200px] mb-6" onClick={() => setIsFlipped(!isFlipped)}>
+                  <div className={`relative w-full h-full transition-all duration-700 [transform-style:preserve-3d] ${isFlipped ? '[transform:rotateY(180deg)]' : ''}`}>
+                    {/* FRONT */}
+                    <div className="absolute inset-0 w-full h-full [backface-visibility:hidden] rounded-xl overflow-hidden bg-white shadow-lg">
+                      <img src="/card-front.svg" className="absolute inset-0 w-full h-full object-cover" alt="ID Front" />
+                      <div className="relative z-10 p-3 h-full text-black">
+                        <img src={userInfo.photo} className="absolute object-cover rounded-sm" style={{ top: "25%", left: "5%", width: "23%", height: "46%" }} alt="Profile" />
+                        <div className="absolute font-semibold text-[9px]" style={{ top: "27%", left: "30%" }}>{userInfo.surname}</div>
+                        <div className="absolute font-semibold text-[9px]" style={{ top: "42%", left: "30%" }}>{userInfo.lastName}</div>
+                        <div className="absolute font-semibold text-[9px]" style={{ top: "55%", left: "30%" }}>{userInfo.firstName}</div>
+                        <div className="absolute font-bold font-mono text-[9px]" style={{ top: "89%", left: "30%" }}>{userInfo.regNum}</div>
+                        <div className="absolute text-[9px]" style={{ top: "66%", left: "30%" }}>{userInfo.gender}</div>
+                        <div className="absolute text-[9px]" style={{ top: "80%", left: "30%" }}>{userInfo.dateOfBirth}</div>
+                      </div>
+                    </div>
+                    {/* BACK */}
+                    <div className="absolute inset-0 w-full h-full [backface-visibility:hidden] [transform:rotateY(180deg)] rounded-xl overflow-hidden bg-white shadow-lg">
+                      <img src="/card-back.svg" className="absolute inset-0 w-full h-full object-cover" alt="ID Back" />
+                      <div className="relative z-10 p-3 h-full text-black">
+                        <div className="absolute font-medium text-[9px]" style={{ top: "40%", left: "5%" }}>{userInfo.dateOfIssue}</div>
+                        <div className="absolute font-medium text-[9px]" style={{ top: "55%", left: "5%" }}>{userInfo.dateOfExpiry}</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="w-full max-w-[370px] space-y-2 px-2">
+                  <button className="w-full py-4 text-[14px] text-white font-bold bg-blue-600 rounded-2xl shadow-md active:scale-[0.96] transition-all">
+                    Лавлагаа авах
+                  </button> 
+                  <button 
+                    onClick={() => { setIsEditing(true); setTempInfo(userInfo); }}
+                    className="w-full py-4 text-[14px] text-blue-600 font-bold bg-blue-50 rounded-2xl active:scale-[0.96] transition-all border border-blue-100"
+                  >
+                    Дахин захиалах (Засах)
+                  </button>
+                </div>
+              </>
+            )}
           </div>
         </div>
       </div>
     </div>
   );
+}
 }
