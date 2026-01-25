@@ -33,10 +33,10 @@ export default function IdCard() {
   return (
     <div className={`${inter.className} w-full min-h-screen bg-gradient-to-b from-[#E8EFFF] via-[#F3F6FF] to-[#F0F2F5] font-sans pb-10 overflow-x-hidden`}>
       {/* 1. ҮНДСЭН CONTAINER */}
-      <div className="p-6 pt-10 w-full mx-auto">
+      <div className="px-3 pt-10 w-full mx-auto">
         
         {/* HEADER */}
-        <div className="flex items-center justify-between mb-5 px">
+        <div className="flex items-center justify-between mb-5 px-1">
           <div className="flex-shrink-0 bg-white p-2.5 rounded-xl shadow-sm border border-gray-100 text-gray-800 active:scale-90 transition-all cursor-pointer">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
               <path d="M15 6L9 12.0001L15 18" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5"/>
@@ -53,7 +53,7 @@ export default function IdCard() {
         </div>
 
         {/* SECTION: ТОГГЛ (Бичиг баримтын мэдээлэл) */}
-        <div className="bg-white px-2 py-2 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between mb-6">
+        <div className="bg-white px-3 py-3 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between mb-6">
           <div className="flex items-center space-x-2 ">
             <div className="w-8 h-8 bg-gray-100 rounded-xl flex items-center justify-center text-gray-500">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
@@ -77,7 +77,7 @@ export default function IdCard() {
 
         {/* КАРТ ХЭСЭГ (Тогглоос салгаж гаргаснаар томорно) */}
         {isDocumentsVisible && (
-          <div className="bg-white py-3 px-1 rounded-2xl shadow  mb-6 transition-all duration-500 overflow-hidden">
+          <div className="bg-white py-3 px-0 rounded-2xl shadow  mb-6 transition-all duration-500 overflow-hidden">
             <div
               onClick={() => setIsOpen(true)}
               className="relative w-full aspect-[1.58/1] rounded-2xl overflow-hidden  cursor-pointer transition-transform active:scale-[0.98]"
@@ -111,7 +111,7 @@ export default function IdCard() {
           </div>
 
           <div className="px-4 flex flex-col items-center">
-            <div className="w-full max-w-[320px] aspect-[1.58/1] cursor-pointer [perspective:1200px] mb-3 mt-0.5" onClick={() => setIsFlipped(!isFlipped)}>
+            <div className="w-full max-w-full aspect-[1.58/1] cursor-pointer [perspective:1200px] mb-3 mt-0.5" onClick={() => setIsFlipped(!isFlipped)}>
               <div className={`relative w-full h-full transition-all duration-700 [transform-style:preserve-3d] ${isFlipped ? '[transform:rotateY(180deg)]' : ''}`}>
                 {/* FRONT */}
                 <div className="absolute inset-0 w-full h-full [backface-visibility:hidden] rounded-xl overflow-hidden">
