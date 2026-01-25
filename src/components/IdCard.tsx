@@ -32,9 +32,8 @@ export default function IdCard() {
 
   return (
     <div className={`${inter.className} w-full min-h-screen bg-gradient-to-b from-[#E8EFFF] via-[#F3F6FF] to-[#F0F2F5] font-sans pb-10 overflow-x-hidden`}>
-      
       {/* 1. ҮНДСЭН CONTAINER */}
-      <div className="p-6 pt-12 max-w-md mx-auto">
+      <div className="p-6 pt-4 max-w-md mx-auto">
         
         {/* HEADER */}
         <div className="flex items-center justify-between mb-5 px">
