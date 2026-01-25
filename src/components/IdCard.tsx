@@ -104,16 +104,13 @@ export default function IdCard() {
         />
 
         <div className={`absolute bottom-0 left-0 right-0 w-full bg-white rounded-lg transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]  ${isOpen ? 'translate-y-0' : 'translate-y-full'}`} 
-             style={{ height: '48vh' }}>
+             style={{ height: '52vh' }}>
           
-          <div className="w-12 h-1.5 bg-gray-200 rounded-full mx-auto my-4" />
+          <div className="w-12 h-1 bg-gray-200 rounded-xl mx-auto my-4" />
 
-          <div className="px-6 flex justify-between items-center mb-6">
+          <div className="px-6 flex justify-between items-center mb-3">
              <div className="w-8" />
              <h3 className="text-xs text-gray-800">Иргэний үнэмлэх</h3>
-             <button onClick={() => { setIsOpen(false); setIsFlipped(false); }} className="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center text-gray-400">
-                <svg width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12"/></svg>
-             </button>
           </div>
 
           <div className="px-4 flex flex-col items-center">
@@ -136,7 +133,7 @@ export default function IdCard() {
                 </div>
               </div>
             </div>
-            <div className="w-full max-w-[370px] space-y-3 px-2">
+            <div className="w-full max-w-[380px] space-y-3 px-2">
               <button className="w-full py-3.5 text-[14px] text-white font-semibold bg-blue-600 rounded-lg shadow-md active:scale-[0.98] transition-all">
                 Лавлагаа авах
               </button> 
