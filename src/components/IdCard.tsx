@@ -33,7 +33,7 @@ export default function IdCard() {
   return (
     <div className={`${inter.className} w-full min-h-screen bg-gradient-to-b from-[#E8EFFF] via-[#F3F6FF] to-[#F0F2F5] font-sans pb-10 overflow-x-hidden`}>
       {/* 1. ҮНДСЭН CONTAINER */}
-      <div className="p-6 pt-4 max-w-md mx-auto">
+      <div className="p-6 pt-10 w-full mx-auto">
         
         {/* HEADER */}
         <div className="flex items-center justify-between mb-5 px">
@@ -104,9 +104,9 @@ export default function IdCard() {
         <div className={`absolute bottom-0 left-0 right-0 w-full bg-white rounded-xl transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]  ${isOpen ? 'translate-y-0' : 'translate-y-full'}`} 
              style={{ height: '50vh' }}>
           
-          <div className="w-12 h-1 bg-gray-200 rounded-xl mx-auto mb-1 mt-2" />
+          <div className="w-12 h-1 bg-gray-200 rounded-xl mx-auto mb-1 mt-4" />
 
-          <div className="px-6 flex justify-center items-center mb-2 mt-1 h-7">
+          <div className="px-6 flex justify-center items-center mb-2 mt-4 h-7">
              <h3 className="text-xs text-gray-800">Иргэний үнэмлэх</h3>
           </div>
 
