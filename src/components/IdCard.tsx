@@ -108,9 +108,9 @@ export default function IdCard() {
           
           <div className="w-12 h-1 bg-gray-200 rounded-xl mx-auto my-4" />
 
-          <div className="px-6 flex justify-between items-center mb-3">
+          <div className="px-6 flex justify-between items-center mb-4 mt-3">
              <div className="w-8" />
-             <h3 className="text-xs text-gray-800">Иргэний үнэмлэх</h3>
+             <h3 className="text-xs text-gray-800 text-center">Иргэний үнэмлэх</h3>
           </div>
 
           <div className="px-4 flex flex-col items-center">
