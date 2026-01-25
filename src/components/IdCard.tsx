@@ -33,7 +33,7 @@ export default function IdCard() {
   return (
     <div className={`${inter.className} w-full min-h-screen bg-gradient-to-b from-[#E8EFFF] via-[#F3F6FF] to-[#F0F2F5] font-sans pb-10 overflow-x-hidden`}>
       {/* 1. ҮНДСЭН CONTAINER */}
-      <div className="px-3 pt-10 w-full mx-auto">
+      <div className="px-3 pt-6 w-full mx-auto">
         
         {/* HEADER */}
         <div className="flex items-center justify-between mb-5 px-1">
@@ -77,7 +77,7 @@ export default function IdCard() {
 
         {/* КАРТ ХЭСЭГ (Тогглоос салгаж гаргаснаар томорно) */}
         {isDocumentsVisible && (
-          <div className="bg-white py-3 px-0 rounded-2xl shadow  mb-6 transition-all duration-500 overflow-hidden">
+          <div className="bg-white py-3 px-0.5 rounded-2xl shadow  mb-6 transition-all duration-500 overflow-hidden">
             <div
               onClick={() => setIsOpen(true)}
               className="relative w-full aspect-[1.58/1] rounded-2xl overflow-hidden  cursor-pointer transition-transform active:scale-[0.98]"
@@ -104,9 +104,9 @@ export default function IdCard() {
         <div className={`absolute bottom-0 left-0 right-0 w-full bg-white rounded-xl transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]  ${isOpen ? 'translate-y-0' : 'translate-y-full'}`} 
              style={{ height: '50vh' }}>
           
-          <div className="w-12 h-1 bg-gray-200 rounded-xl mx-auto mb-1 mt-4" />
+          <div className="w-12 h-1 bg-gray-200 rounded-xl mx-auto mb-1 mt-3" />
 
-          <div className="px-6 flex justify-center items-center mb-2 mt-4 h-7">
+          <div className="px-6 flex justify-center items-center mb-2 mt-3 h-7">
              <h3 className="text-xs text-gray-800">Иргэний үнэмлэх</h3>
           </div>
 
@@ -131,10 +131,10 @@ export default function IdCard() {
               </div>
             </div>
             <div className="w-full max-w-[370px] space-y-2 px-2">
-              <button className="w-full py-3.5 text-[14px] text-white font-semibold bg-blue-600 rounded-lg shadow-md active:scale-[0.5] transition-all">
+              <button className="w-full py-3.5 text-[14px] text-white font-semibold bg-blue-600 rounded-lg shadow-md active:scale-[0.96] transition-all">
                 Лавлагаа авах
               </button> 
-              <button className="w-full py-3.5 text-[14px] text-blue-600 font-semibold bg-blue-100 rounded-lg active:scale-[0.5] transition-all">
+              <button className="w-full py-3.5 text-[14px] text-blue-600 font-semibold bg-blue-100 rounded-lg active:scale-[0.96] transition-all">
                 Дахин захиалах
               </button>
             </div>
