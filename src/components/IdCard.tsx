@@ -100,7 +100,7 @@ export default function IdCard() {
             >
               <img src="/card-front.svg" className="absolute inset-0 w-full h-full object-cover" alt="ID Preview" />
               <div className="relative z-10 p-4 h-full pointer-events-none text-black">
-                <img src={userInfo.photo} className="absolute object-cover rounded-sm" style={{ top: "37%", left: "3%", width: "23%", height: "46%" }} alt="Profile" />
+                <img src={userInfo.photo} className="absolute object-cover rounded-sm" style={{ top: "37%", left: "3%", width: "23%", height: "48.5%" }} alt="Profile" />
                 <div className="absolute text-[8px]" style={{top: "27%", left: "30%"}}>{userInfo.surname}</div>
                 <div className="absolute text-[8px]" style={{ top: "42%", left: "30%" }}>{userInfo.lastName}</div>
                 <div className="absolute text-[8px]" style={{ top: "55%", left: "30%" }}>{userInfo.firstName}</div>
@@ -181,7 +181,7 @@ export default function IdCard() {
                     <div className="absolute inset-0 w-full h-full [backface-visibility:hidden] rounded-xl overflow-hidden bg-white shadow-lg">
                       <img src="/card-front.svg" className="absolute inset-0 w-full h-full object-cover" alt="ID Front" />
                       <div className="relative z-10 p-3 h-full text-black">
-                        <img src={userInfo.photo} className="absolute object-cover" style={{ top: "40%", left: "10%", width: "23%", height: "46%" }} alt="Profile" />
+                        <img src={userInfo.photo} className="absolute object-cover" style={{ top: "37%", left: "3%", width: "23%", height: "48.5%" }} alt="Profile" />
                         <div className="absolute text-[8.5px]" style={{ top: "27%", left: "30%" }}>{userInfo.surname}</div>
                         <div className="absolute text-[8.5px]" style={{ top: "42%", left: "30%" }}>{userInfo.lastName}</div>
                         <div className="absolute text-[8.5px]" style={{ top: "55%", left: "30%" }}>{userInfo.firstName}</div>
