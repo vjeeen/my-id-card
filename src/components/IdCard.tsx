@@ -134,6 +134,7 @@ export default function IdCard() {
                   <input className="w-full p-3 bg-gray-50 border rounded-xl text-sm" placeholder="Овог" value={tempInfo.surname} onChange={e => setTempInfo({...tempInfo, surname: e.target.value})} />
                   <input className="w-full p-3 bg-gray-50 border rounded-xl text-sm" placeholder="Эцэг/Эх" value={tempInfo.lastName} onChange={e => setTempInfo({...tempInfo, lastName: e.target.value})} />
                   <input className="w-full p-3 bg-gray-50 border rounded-xl text-sm" placeholder="Нэр" value={tempInfo.firstName} onChange={e => setTempInfo({...tempInfo, firstName: e.target.value})} />
+                  <input className="w-full p-3 bg-gray-50 border rounded-xl text-sm" placeholder="Төрсөн он, сар, өдөр" value={tempInfo.dateOfBirth} onChange={e => setTempInfo({...tempInfo, dateOfBirth: e.target.value})} />
                   <input className="w-full p-3 bg-gray-50 border rounded-xl text-sm" placeholder="Регистр" value={tempInfo.regNum} onChange={e => setTempInfo({...tempInfo, regNum: e.target.value})} />
                   <input className="w-full p-3 bg-gray-50 border rounded-xl text-sm" placeholder="Зургийн URL" value={tempInfo.photo} onChange={e => setTempInfo({...tempInfo, photo: e.target.value})} />
                 </div>
