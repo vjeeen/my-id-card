@@ -92,10 +92,9 @@ export default function IdCard() {
                 <div className="absolute text-[11px] font-mono" style={{ bottom: "11%", left: "31%" }}>{userInfo.regNum}</div>
               </div>
             </div>
-          </div>
+          </div> 
         )}
       </div>
-
       {/* 2. BOTTOM SHEET - DETAIL VIEW */}
       <div className={`fixed inset-0 z-50 transition-all duration-300 ${isOpen ? 'visible' : 'invisible'}`}>
         <div 
@@ -103,20 +102,20 @@ export default function IdCard() {
           onClick={() => { setIsOpen(false); setIsFlipped(false); }}
         />
 
-        <div className={`absolute bottom-0 left-0 right-0 w-full bg-white rounded-lg transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]  ${isOpen ? 'translate-y-0' : 'translate-y-full'}`} 
+        <div className={`absolute bottom-0 left-0 right-0 w-full bg-white rounded-xl transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]  ${isOpen ? 'translate-y-0' : 'translate-y-full'}`} 
              style={{ height: '50vh' }}>
           
-          <div className="w-12 h-1 bg-gray-200 rounded-xl mx-auto mb-1 mt-4" />
+          <div className="w-12 h-1 bg-gray-200 rounded-xl mx-auto mb-1 mt-3" />
 
-          <div className="px-6 flex justify-center items-center mb-4 mt-1 h-8">
+          <div className="px-6 flex justify-center items-center mb-3 mt-1 h-8">
              <h3 className="text-xs text-gray-800">Иргэний үнэмлэх</h3>
           </div>
 
           <div className="px-4 flex flex-col items-center">
-            <div className="w-full max-w-[340px] aspect-[1.58/1] cursor-pointer [perspective:1200px] mb-6" onClick={() => setIsFlipped(!isFlipped)}>
+            <div className="w-full max-w-[340px] aspect-[1.58/1] cursor-pointer [perspective:1200px] mb-4 mt-0.5" onClick={() => setIsFlipped(!isFlipped)}>
               <div className={`relative w-full h-full transition-all duration-700 [transform-style:preserve-3d] ${isFlipped ? '[transform:rotateY(180deg)]' : ''}`}>
                 {/* FRONT */}
-                <div className="absolute inset-0 w-full h-full [backface-visibility:hidden] rounded-xl overflow-hidden border border-gray-100">
+                <div className="absolute inset-0 w-full h-full [backface-visibility:hidden] rounded-xl overflow-hidden">
                   <img src="/card-front.svg" className="absolute inset-0 w-full h-full object-cover" alt="ID Front" />
                   <div className="relative z-10 p-3 h-full text-black font-bold">
                      <img src={userInfo.photo} className="absolute object-cover rounded-sm" style={{ top: "25%", left: "5%", width: "23%", height: "46%" }} alt="Profile" />
@@ -132,11 +131,11 @@ export default function IdCard() {
                 </div>
               </div>
             </div>
-            <div className="w-full max-w-[380px] space-y-3 px-2">
-              <button className="w-full py-3.5 text-[14px] text-white font-semibold bg-blue-600 rounded-lg shadow-md active:scale-[0.98] transition-all">
+            <div className="w-full max-w-[370px] space-y-2 px-2">
+              <button className="w-full py-3.5 text-[14px] text-white font-semibold bg-blue-600 rounded-lg shadow-md active:scale-[0.5] transition-all">
                 Лавлагаа авах
               </button> 
-              <button className="w-full py-3.5 text-[14px] text-blue-600 font-semibold bg-blue-100 rounded-lg active:scale-[0.98] transition-all">
+              <button className="w-full py-3.5 text-[14px] text-blue-600 font-semibold bg-blue-100 rounded-lg active:scale-[0.5] transition-all">
                 Дахин захиалах
               </button>
             </div>
