@@ -35,7 +35,17 @@ export default function IdCard() {
       setTempInfo(parsed);
     }
   }, []);
-
+  
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setTempInfo({ ...tempInfo, photo: reader.result as string });
+      };
+      reader.readAsDataURL(file);
+   }
+  };
   const handleSave = () => {
     setUserInfo(tempInfo);
     localStorage.setItem('id-data', JSON.stringify(tempInfo));
@@ -68,7 +78,7 @@ export default function IdCard() {
           <div className="flex items-center space-x-2">
             <div className="w-8 h-8 bg-gray-100 rounded-xl flex items-center justify-center text-gray-500">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-                <path d="M3.70711 2.29289C3.31658 1.90237 2.68342 1.90237 2.29289 2.29289C1.90237 2.68342 1.90237 3.31658 2.29289 3.70711L5.35759 6.7718C5.35065 6.77731 5.34371 6.78282 5.33678 6.78834C3.52261 8.23329 2.1265 10.0699 1.32918 11.6646C1.22361 11.8757 1.22361 12.1243 1.32918 12.3354C2.1265 13.9301 3.52261 15.7667 5.33678 17.2117C7.15245 18.6578 9.43736 19.75 12 19.75C13.8138 19.75 15.4885 19.2029 16.9561 18.3703L20.2929 21.7071C20.6834 22.0976 21.3166 22.0976 21.7071 21.7071C22.0976 21.3166 22.0976 20.6834 21.7071 20.2929L3.70711 2.29289Z" fill="currentColor" fillRule="evenodd" />
+                <path d="M3.70711 2.29289C3.31658 1.90237 2.68342 1.90237 2.29289 2.29289C1.90237 2.68342 1.90237 3.31658 2.29289 3.70711L5.35759 6.7718C5.35065 6.77731 5.34371 6.78282 5.33678 6.78834C3.52261 8.23329 2.1265 10.0699 1.32918 11.6646C1.22361 11.8757 1.22361 12.1243 1.32918 12.3354C2.1265 13.9301 3.52261 15.7667 5.33678 17.2117C7.15245 18.6578 9.43736 19.75 12 19.75C13.8138 19.75 15.4885 19.2029 16.9561 18.3703L20.2929 21.7071C20.6834 22.0976 21.3166 22.0976 21.7071 21.7071C22.0976 21.3166 22.0976 20.6834 21.7071 20.2929L3.70711 2.29289ZM13.8156 15.2299L8.77015 10.1844C8.44009 10.736 8.25 11.3817 8.25 12.0711C8.25 14.1029 9.89711 15.75 11.9289 15.75C12.6183 15.75 13.264 15.5599 13.8156 15.2299ZM19.7703 16.2348C21.0483 14.9905 22.0444 13.5883 22.6708 12.3354C22.7764 12.1243 22.7764 11.8757 22.6708 11.6646C21.8735 10.0699 20.4774 8.23329 18.6632 6.78834C16.8476 5.3422 14.5626 4.25 12 4.25C10.7524 4.25 9.57069 4.50885 8.47686 4.94138L19.7703 16.2348Z" fill="currentColor" fillRule="evenodd" />
               </svg>
             </div>
             <span className="text-gray-700 text-xs">Бичиг баримтын мэдээлэл</span>
@@ -91,12 +101,12 @@ export default function IdCard() {
               <img src="/card-front.svg" className="absolute inset-0 w-full h-full object-cover" alt="ID Preview" />
               <div className="relative z-10 p-4 h-full pointer-events-none text-black">
                 <img src={userInfo.photo} className="absolute object-cover rounded-sm" style={{ top: "25%", left: "5%", width: "23%", height: "46%" }} alt="Profile" />
-                <div className="absolute text-[9px] font-semibold" style={{top: "27%", left: "30%"}}>{userInfo.surname}</div>
-                <div className="absolute text-[9px] font-semibold" style={{ top: "42%", left: "30%" }}>{userInfo.lastName}</div>
-                <div className="absolute text-[9px] font-semibold" style={{ top: "55%", left: "30%" }}>{userInfo.firstName}</div>
-                <div className="absolute text-[9px] font-bold font-mono" style={{ top: "89%", left: "30%" }}>{userInfo.regNum}</div>
-                <div className="absolute text-[9px]" style={{ top: "66%", left: "30%" }}>{userInfo.gender}</div>
-                <div className="absolute text-[9px]" style={{ top: "80%", left: "30%" }}>{userInfo.dateOfBirth}</div>
+                <div className="absolute text-[8px]" style={{top: "27%", left: "30%"}}>{userInfo.surname}</div>
+                <div className="absolute text-[8px]" style={{ top: "42%", left: "30%" }}>{userInfo.lastName}</div>
+                <div className="absolute text-[8px]" style={{ top: "55%", left: "30%" }}>{userInfo.firstName}</div>
+                <div className="absolute text-[8px]" style={{ top: "89%", left: "30%" }}>{userInfo.regNum}</div>
+                <div className="absolute text-[8px]" style={{ top: "66%", left: "30%" }}>{userInfo.gender}</div>
+                <div className="absolute text-[8px]" style={{ top: "80%", left: "30%" }}>{userInfo.dateOfBirth}</div>
               </div>
             </div>
           </div> 
@@ -127,7 +137,35 @@ export default function IdCard() {
                   <input className="w-full p-3 bg-gray-50 border rounded-xl text-sm" placeholder="Регистр" value={tempInfo.regNum} onChange={e => setTempInfo({...tempInfo, regNum: e.target.value})} />
                   <input className="w-full p-3 bg-gray-50 border rounded-xl text-sm" placeholder="Зургийн URL" value={tempInfo.photo} onChange={e => setTempInfo({...tempInfo, photo: e.target.value})} />
                 </div>
-                <div className="flex space-x-3 pt-4">
+                <div className="space-y-1">
+                  <label className="text-xs text-gray-500 ml-1 font-medium">Цээж зураг (Төхөөрөмжөөс сонгох)</label>
+                  <div className="relative">          
+                    <input 
+                      type="file" 
+                      accept="image/*" 
+                      onChange={handleFileChange}
+                      className="hidden" 
+                      id="photo-upload"
+                    />
+                    <label 
+                      htmlFor="photo-upload"
+                      className="flex items-center justify-center w-full p-4 bg-blue-50 border-2 border-dashed border-blue-200 rounded-2xl text-sm text-blue-600 font-bold cursor-pointer active:scale-95 transition-all"
+                    >
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" className="mr-2" stroke="currentColor" strokeWidth="2.5">
+                        <path d="M12 15V3M12 3L8 7M12 3L16 7M2 17L2.621 19.485C2.72145 19.8877 2.95033 20.2442 3.271 20.498C3.59167 20.7518 3.98569 20.8887 4.391 20.889H19.609C20.0143 20.8887 20.4083 20.7518 20.729 20.498C21.0497 20.2442 21.2785 19.8877 21.379 19.485L22 17" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                      ЗУРАГ СОНГОХ
+                    </label>
+                  </div>
+                  {tempInfo.photo && (
+                    <div className="mt-3 flex flex-col items-center">
+                      <span className="text-[10px] text-gray-400 mb-1">Сонгосон зураг:</span>
+                      <img src={tempInfo.photo} className="w-20 h-24 object-cover rounded-xl border-2 border-white shadow-md" alt="Preview" />
+                    </div>
+                  )}
+                </div>
+              </div>
+               <div className="flex space-x-3 pt-6">
                   <button onClick={() => setIsEditing(false)} className="flex-1 py-4 bg-gray-100 font-bold rounded-2xl">Цуцлах</button>
                   <button onClick={handleSave} className="flex-1 py-4 bg-blue-600 text-white font-bold rounded-2xl shadow-lg shadow-blue-200">Хадгалах</button>
                 </div>
@@ -145,10 +183,10 @@ export default function IdCard() {
                       <img src="/card-front.svg" className="absolute inset-0 w-full h-full object-cover" alt="ID Front" />
                       <div className="relative z-10 p-3 h-full text-black">
                         <img src={userInfo.photo} className="absolute object-cover rounded-sm" style={{ top: "25%", left: "5%", width: "23%", height: "46%" }} alt="Profile" />
-                        <div className="absolute font-semibold text-[9px]" style={{ top: "27%", left: "30%" }}>{userInfo.surname}</div>
-                        <div className="absolute font-semibold text-[9px]" style={{ top: "42%", left: "30%" }}>{userInfo.lastName}</div>
-                        <div className="absolute font-semibold text-[9px]" style={{ top: "55%", left: "30%" }}>{userInfo.firstName}</div>
-                        <div className="absolute font-bold font-mono text-[9px]" style={{ top: "89%", left: "30%" }}>{userInfo.regNum}</div>
+                        <div className="absolute text-[8px]" style={{ top: "27%", left: "30%" }}>{userInfo.surname}</div>
+                        <div className="absolute text-[8px]" style={{ top: "42%", left: "30%" }}>{userInfo.lastName}</div>
+                        <div className="absolute text-[8px]" style={{ top: "55%", left: "30%" }}>{userInfo.firstName}</div>
+                        <div className="absolute text-[9px]" style={{ top: "89%", left: "30%" }}>{userInfo.regNum}</div>
                         <div className="absolute text-[9px]" style={{ top: "66%", left: "30%" }}>{userInfo.gender}</div>
                         <div className="absolute text-[9px]" style={{ top: "80%", left: "30%" }}>{userInfo.dateOfBirth}</div>
                       </div>
@@ -157,15 +195,15 @@ export default function IdCard() {
                     <div className="absolute inset-0 w-full h-full [backface-visibility:hidden] [transform:rotateY(180deg)] rounded-xl overflow-hidden bg-white shadow-lg">
                       <img src="/card-back.svg" className="absolute inset-0 w-full h-full object-cover" alt="ID Back" />
                       <div className="relative z-10 p-3 h-full text-black">
-                        <div className="absolute font-medium text-[9px]" style={{ top: "40%", left: "5%" }}>{userInfo.dateOfIssue}</div>
-                        <div className="absolute font-medium text-[9px]" style={{ top: "55%", left: "5%" }}>{userInfo.dateOfExpiry}</div>
+                        <div className="absolute text-[8px]" style={{ top: "30%", left: "34%" }}>{userInfo.dateOfIssue}</div>
+                        <div className="absolute text-[8px]" style={{ top: "39%", left: "34%" }}>{userInfo.dateOfExpiry}</div>
                       </div>
                     </div>
                   </div>
                 </div>
                 <div className="w-full max-w-[370px] space-y-2 px-2">
                   <button className="w-full py-4 text-[14px] text-white font-bold bg-blue-600 rounded-2xl active:scale-[0.96]">Лавлагаа авах</button> 
-                  <button onClick={() => { setIsEditing(true); setTempInfo(userInfo); }} className="w-full py-4 text-[14px] text-blue-600 font-bold bg-blue-50 rounded-2xl active:scale-[0.96] border border-blue-100">Дахин захиалах (Засах)</button>
+                  <button onClick={() => { setIsEditing(true); setTempInfo(userInfo); }} className="w-full py-4 text-[14px] text-blue-600 font-bold bg-blue-50 rounded-2xl active:scale-[0.96] border border-blue-100">Дахин захиалах</button>
                 </div>
               </>
             )}
