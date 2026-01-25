@@ -18,7 +18,7 @@ export default function IdCard() {
     surname: "Боржигин", lastName: "Хашсансар", firstName: "Ану-Үжин",
     regNum: "596468675497", gender: "Эмэгтэй", dateOfBirth: "2005/01/15",
     dateOfIssue: "2021/01/10", dateOfExpiry: "2030/01/10",
-    photo: "blob:https://e-mongolia.mn/c4c7434e-3021-4235-ab75-858a7389b38d"
+    photo: "https://i.pinimg.com/1200x/4c/be/8f/4cbe8fc7b5d9128368e956b405d8172f.jpg"
   });
 
   const [isDocumentsVisible, setIsDocumentsVisible] = useState(true);
