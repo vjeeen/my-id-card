@@ -100,7 +100,7 @@ export default function IdCard() {
             >
               <img src="/card-front.svg" className="absolute inset-0 w-full h-full object-cover" alt="ID Preview" />
               <div className="relative z-10 p-4 h-full pointer-events-none text-black">
-                <img src={userInfo.photo} className="absolute object-cover rounded-sm" style={{ top: "25%", left: "5%", width: "23%", height: "46%" }} alt="Profile" />
+                <img src={userInfo.photo} className="absolute object-cover rounded-sm" style={{ top: "30%", left: "5%", width: "23%", height: "46%" }} alt="Profile" />
                 <div className="absolute text-[8px]" style={{top: "27%", left: "30%"}}>{userInfo.surname}</div>
                 <div className="absolute text-[8px]" style={{ top: "42%", left: "30%" }}>{userInfo.lastName}</div>
                 <div className="absolute text-[8px]" style={{ top: "55%", left: "30%" }}>{userInfo.firstName}</div>
@@ -181,26 +181,26 @@ export default function IdCard() {
                     <div className="absolute inset-0 w-full h-full [backface-visibility:hidden] rounded-xl overflow-hidden bg-white shadow-lg">
                       <img src="/card-front.svg" className="absolute inset-0 w-full h-full object-cover" alt="ID Front" />
                       <div className="relative z-10 p-3 h-full text-black">
-                        <img src={userInfo.photo} className="absolute object-cover rounded-sm" style={{ top: "25%", left: "5%", width: "23%", height: "46%" }} alt="Profile" />
-                        <div className="absolute text-[8px]" style={{ top: "27%", left: "30%" }}>{userInfo.surname}</div>
-                        <div className="absolute text-[8px]" style={{ top: "42%", left: "30%" }}>{userInfo.lastName}</div>
-                        <div className="absolute text-[8px]" style={{ top: "55%", left: "30%" }}>{userInfo.firstName}</div>
-                        <div className="absolute text-[9px]" style={{ top: "89%", left: "30%" }}>{userInfo.regNum}</div>
-                        <div className="absolute text-[9px]" style={{ top: "66%", left: "30%" }}>{userInfo.gender}</div>
-                        <div className="absolute text-[9px]" style={{ top: "80%", left: "30%" }}>{userInfo.dateOfBirth}</div>
+                        <img src={userInfo.photo} className="absolute object-cover" style={{ top: "30%", left: "5%", width: "23%", height: "46%" }} alt="Profile" />
+                        <div className="absolute text-[8.5px]" style={{ top: "27%", left: "30%" }}>{userInfo.surname}</div>
+                        <div className="absolute text-[8.5px]" style={{ top: "42%", left: "30%" }}>{userInfo.lastName}</div>
+                        <div className="absolute text-[8.5px]" style={{ top: "55%", left: "30%" }}>{userInfo.firstName}</div>
+                        <div className="absolute text-[8.5px]" style={{ top: "89%", left: "30%" }}>{userInfo.regNum}</div>
+                        <div className="absolute text-[8.5px]" style={{ top: "66%", left: "30%" }}>{userInfo.gender}</div>
+                        <div className="absolute text-[8.5px]" style={{ top: "80%", left: "30%" }}>{userInfo.dateOfBirth}</div>
                       </div>
                     </div>
                     {/* BACK */}
                     <div className="absolute inset-0 w-full h-full [backface-visibility:hidden] [transform:rotateY(180deg)] rounded-xl overflow-hidden bg-white shadow-lg">
                       <img src="/card-back.svg" className="absolute inset-0 w-full h-full object-cover" alt="ID Back" />
                       <div className="relative z-10 p-3 h-full text-black">
-                        <div className="absolute text-[8px]" style={{ top: "30%", left: "34%" }}>{userInfo.dateOfIssue}</div>
-                        <div className="absolute text-[8px]" style={{ top: "39%", left: "34%" }}>{userInfo.dateOfExpiry}</div>
+                        <div className="absolute text-[8.5px]" style={{ top: "31%", left: "34%" }}>{userInfo.dateOfIssue}</div>
+                        <div className="absolute text-[8.5px]" style={{ top: "42%", left: "34%" }}>{userInfo.dateOfExpiry}</div>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div className="w-full max-w-[370px] space-y-2 px-2">
+                <div className="w-full max-w-[390px] space-y-2 px-2">
                   <button className="w-full py-4 text-[14px] text-white font-bold bg-blue-600 rounded-2xl active:scale-[0.96]">Лавлагаа авах</button> 
                   <button onClick={() => { setIsEditing(true); setTempInfo(userInfo); }} className="w-full py-4 text-[14px] text-blue-600 font-bold bg-blue-50 rounded-2xl active:scale-[0.96] border border-blue-100">Дахин захиалах</button>
                 </div>
