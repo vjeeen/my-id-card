@@ -182,7 +182,7 @@ export default function IdCard() {
                     <div className="absolute inset-0 w-full h-full [backface-visibility:hidden] rounded-xl overflow-hidden bg-white shadow-lg">
                       <img src="/card-front.svg" className="absolute inset-0 w-full h-full object-cover" alt="ID Front" />
                       <div className="relative z-10 p-3 h-full text-black">
-                        <img src={userInfo.photo} className="absolute object-cover" style={{ top: "37%", left: "3%", width: "28%", height: "55%" }} alt="Profile" />
+                        <img src={userInfo.photo} className="absolute object-cover" style={{ top: "28%", left: "3%", width: "23%", height: "55%" }} alt="Profile" />
                         <div className="absolute text-[8.5px]" style={{ top: "27%", left: "30%" }}>{userInfo.surname}</div>
                         <div className="absolute text-[8.5px]" style={{ top: "42%", left: "30%" }}>{userInfo.lastName}</div>
                         <div className="absolute text-[8.5px]" style={{ top: "55%", left: "30%" }}>{userInfo.firstName}</div>
