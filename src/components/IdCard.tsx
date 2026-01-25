@@ -31,7 +31,7 @@ export default function IdCard() {
   }, []);
 
   return (
-    <div className={`${inter.className} w-full min-h-screen bg-gradient-to-b from-[#E8EFFF] via-[#F3F6FF] to-[#F0F2F5] font-sans pb-10`}>
+    <div className={`${inter.className} w-full min-h-screen bg-gradient-to-b from-[#E8EFFF] via-[#F3F6FF] to-[#F0F2F5] font-sans pb-10 overflow-x-hidden`}>
       
       {/* 1. ҮНДСЭН CONTAINER */}
       <div className="p-6 pt-12 max-w-md mx-auto">
@@ -105,14 +105,14 @@ export default function IdCard() {
         <div className={`absolute bottom-0 left-0 right-0 w-full bg-white rounded-xl transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]  ${isOpen ? 'translate-y-0' : 'translate-y-full'}`} 
              style={{ height: '50vh' }}>
           
-          <div className="w-12 h-1 bg-gray-200 rounded-xl mx-auto mb-1 mt-3" />
+          <div className="w-12 h-1 bg-gray-200 rounded-xl mx-auto mb-1 mt-2" />
 
-          <div className="px-6 flex justify-center items-center mb-3 mt-1 h-8">
+          <div className="px-6 flex justify-center items-center mb-2 mt-1 h-7">
              <h3 className="text-xs text-gray-800">Иргэний үнэмлэх</h3>
           </div>
 
           <div className="px-4 flex flex-col items-center">
-            <div className="w-full max-w-[340px] aspect-[1.58/1] cursor-pointer [perspective:1200px] mb-4 mt-0.5" onClick={() => setIsFlipped(!isFlipped)}>
+            <div className="w-full max-w-[320px] aspect-[1.58/1] cursor-pointer [perspective:1200px] mb-3 mt-0.5" onClick={() => setIsFlipped(!isFlipped)}>
               <div className={`relative w-full h-full transition-all duration-700 [transform-style:preserve-3d] ${isFlipped ? '[transform:rotateY(180deg)]' : ''}`}>
                 {/* FRONT */}
                 <div className="absolute inset-0 w-full h-full [backface-visibility:hidden] rounded-xl overflow-hidden">
