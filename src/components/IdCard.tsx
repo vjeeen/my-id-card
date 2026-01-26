@@ -169,7 +169,7 @@ export default function IdCard() {
                         className={`relative z-10 p-3 h-full text-black select-none pointer-events-none ${
                           isFlipped ? 'opacity-0' : 'opacity-100'
                         }`}
-                        style={{ backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden' }}
+                        style={{ backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden', transition: 'none' }}
                       >
                         <img src={userInfo.photo} className="absolute object-cover" style={{ top: "26%", left: "3%", width: "23%", height: "57%" }} alt="Profile" />
                         <div className="absolute text-[8.5px]" style={{ top: "27%", left: "30%" }}>{userInfo.surname}</div>
