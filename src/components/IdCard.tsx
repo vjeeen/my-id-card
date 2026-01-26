@@ -165,9 +165,10 @@ export default function IdCard() {
                       style={{ backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden' }}
                     >
                       <img src="/card-front.svg" className="absolute inset-0 w-full h-full object-cover" alt="ID Front" />
-                      <div 
-                        className="relative z-10 p-3 h-full text-black select-none pointer-events-none"
-                        ${isFlipped ? 'opacity-0' : 'opacity-100'}`}
+                      <div
+                        className={`relative z-10 p-3 h-full text-black select-none pointer-events-none ${
+                          isFlipped ? 'opacity-0' : 'opacity-100'
+                        }`}
                         style={{ backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden' }}
                       >
                         <img src={userInfo.photo} className="absolute object-cover" style={{ top: "26%", left: "3%", width: "23%", height: "57%" }} alt="Profile" />
