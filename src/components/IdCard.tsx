@@ -18,7 +18,7 @@ export default function IdCard() {
     surname: "Боржигин", lastName: "Хашсансар", firstName: "Ану-Үжин",
     regNum: "596468675497", gender: "Эмэгтэй", dateOfBirth: "2005/01/15",
     dateOfIssue: "2021/01/10", dateOfExpiry: "2030/01/10",
-    photo: "https://i.pinimg.com/1200x/4c/be/8f/4cbe8fc7b5d9128368e956b405d8172f.jpg"
+    photo: ""
   });
 
   const [isDocumentsVisible, setIsDocumentsVisible] = useState(true);
@@ -100,7 +100,7 @@ export default function IdCard() {
             >
               <img src="/card-front.svg" className="absolute inset-0 w-full h-full object-cover" alt="ID Preview" />
               <div className="relative z-10 p-4 h-full pointer-events-none text-black">
-                <img src={userInfo.photo} className="absolute object-cover rounded-sm" style={{ top: "24%", left: "3%", width: "23%", height: "57%" }} alt="Profile" />
+                <img src={userInfo.photo} className="absolute object-cover rounded-sm" style={{ top: "26%", left: "3%", width: "23%", height: "57%" }} alt="Profile" />
                 <div className="absolute text-[8px]" style={{top: "27%", left: "30%"}}>{userInfo.surname}</div>
                 <div className="absolute text-[8px]" style={{ top: "42%", left: "30%" }}>{userInfo.lastName}</div>
                 <div className="absolute text-[8px]" style={{ top: "55%", left: "30%" }}>{userInfo.firstName}</div>
@@ -181,8 +181,8 @@ export default function IdCard() {
                     {/* FRONT */}
                     <div className="absolute inset-0 w-full h-full [backface-visibility:hidden] rounded-xl overflow-hidden bg-white shadow-lg">
                       <img src="/card-front.svg" className="absolute inset-0 w-full h-full object-cover" alt="ID Front" />
-                      <div className="relative z-10 p-3 h-full text-black [backface-visibility:hidden]">
-                        <img src={userInfo.photo} className="absolute object-cover" style={{ top: "24%", left: "3%", width: "23%", height: "57%" }} alt="Profile" />
+                      <div className="relative z-10 p-3 h-full text-black">
+                        <img src={userInfo.photo} className="absolute object-cover" style={{ top: "26%", left: "3%", width: "23%", height: "57%" }} alt="Profile" />
                         <div className="absolute text-[8.5px]" style={{ top: "27%", left: "30%" }}>{userInfo.surname}</div>
                         <div className="absolute text-[8.5px]" style={{ top: "42%", left: "30%" }}>{userInfo.lastName}</div>
                         <div className="absolute text-[8.5px]" style={{ top: "55%", left: "30%" }}>{userInfo.firstName}</div>
