@@ -180,9 +180,9 @@ export default function IdCard() {
                   <div className={`relative w-full h-full transition-all duration-700 [transform-style:preserve-3d] ${isFlipped ? '[transform:rotateY(180deg)]' : ''}`}>
                     {/* FRONT */}
                     <div className="absolute inset-0 w-full h-full [backface-visibility:hidden] rounded-xl overflow-hidden bg-white shadow-lg">
+                      style={{ backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden' }}
                       <img src="/card-front.svg" className="absolute inset-0 w-full h-full object-cover" alt="ID Front" />
-                      <div className="relative z-10 p-3 h-full text-black">
-                        style={{ backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden' }}
+                      <div className="relative z-10 p-3 h-full text-black select-none pointer-events-none"style={{ backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden' }}>
                         <img src={userInfo.photo} className="absolute object-cover" style={{ top: "26%", left: "3%", width: "23%", height: "57%" }} alt="Profile" />
                         <div className="absolute text-[8.5px]" style={{ top: "27%", left: "30%" }}>{userInfo.surname}</div>
                         <div className="absolute text-[8.5px]" style={{ top: "42%", left: "30%" }}>{userInfo.lastName}</div>
