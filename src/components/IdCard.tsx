@@ -162,7 +162,7 @@ export default function IdCard() {
                     {/* FRONT */}
                     <div 
                       className="absolute inset-0 w-full h-full rounded-xl overflow-hidden bg-white shadow-lg backface-hidden"
-                      style={{ backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden' }}
+                      style={{ backfaceVisibility: 'hidden', opacity: isFlipped ? 0 : 1, transitionDelay: isFlipped ? '0ms' : '0ms', WebkitBackfaceVisibility: 'hidden' }}
                     >
                       <img src="/card-front.svg" className="absolute inset-0 w-full h-full object-cover" alt="ID Front" />
                       <div
