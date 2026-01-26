@@ -30,9 +30,13 @@ export default function IdCard() {
   useEffect(() => {
     const saved = localStorage.getItem('id-data');
     if (saved) {
-      const parsed = JSON.parse(saved);
-      setUserInfo(parsed);
-      setTempInfo(parsed);
+      try {
+        const parsed = JSON.parse(saved);
+        setUserInfo(parsed);
+        setTempInfo(parsed);
+      } catch (e) {
+        console.error("Error parsing saved data", e);
+      }
     }
   }, []);
   
@@ -46,6 +50,7 @@ export default function IdCard() {
       reader.readAsDataURL(file);
     }
   };
+
   const handleSave = () => {
     setUserInfo(tempInfo);
     localStorage.setItem('id-data', JSON.stringify(tempInfo));
@@ -127,7 +132,6 @@ export default function IdCard() {
 
           <div className="px-4 flex flex-col items-center h-full">
             {isEditing ? (
-              /* EDIT MODE */
               <div className="w-full px-2 pt-4 space-y-4 overflow-y-auto pb-10">
                 <h3 className="text-lg font-bold text-gray-800 text-center mb-4">Мэдээлэл засах</h3>
                 <div className="space-y-3">
@@ -139,31 +143,8 @@ export default function IdCard() {
                   <input className="w-full p-3 bg-gray-50 border rounded-xl text-sm" placeholder="Зургийн URL" value={tempInfo.photo} onChange={e => setTempInfo({...tempInfo, photo: e.target.value})} />
                 </div>
                 <div className="space-y-1">
-                  <label className="text-xs text-gray-500 ml-1 font-medium">Цээж зураг (Төхөөрөмжөөс сонгох)</label>
-                  <div className="relative">          
-                    <input 
-                      type="file" 
-                      accept="image/*" 
-                      onChange={handleFileChange}
-                      className="hidden" 
-                      id="photo-upload"
-                    />
-                    <label 
-                      htmlFor="photo-upload"
-                      className="flex items-center justify-center w-full p-4 bg-blue-50 border-2 border-dashed border-blue-200 rounded-2xl text-sm text-blue-600 font-bold cursor-pointer active:scale-95 transition-all"
-                    >
-                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" className="mr-2" stroke="currentColor" strokeWidth="2.5">
-                        <path d="M12 15V3M12 3L8 7M12 3L16 7M2 17L2.621 19.485C2.72145 19.8877 2.95033 20.2442 3.271 20.498C3.59167 20.7518 3.98569 20.8887 4.391 20.889H19.609C20.0143 20.8887 20.4083 20.7518 20.729 20.498C21.0497 20.2442 21.2785 19.8877 21.379 19.485L22 17" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
-                      ЗУРАГ СОНГОХ
-                    </label>
-                  </div>
-                  {tempInfo.photo && (
-                    <div className="mt-3 flex flex-col items-center">
-                      <span className="text-[10px] text-gray-400 mb-1">Сонгосон зураг:</span>
-                      <img src={tempInfo.photo} className="w-20 h-24 object-cover rounded-xl border-2 border-white shadow-md" alt="Preview" />
-                    </div>
-                  )}
+                  <label className="text-xs text-gray-500 ml-1 font-medium">Цээж зураг</label>
+                  <input type="file" accept="image/*" onChange={handleFileChange} className="w-full text-sm" />
                 </div>
                 <div className="flex space-x-3 pt-6">
                   <button onClick={() => setIsEditing(false)} className="flex-1 py-4 bg-gray-100 font-bold rounded-2xl">Цуцлах</button>
@@ -171,18 +152,23 @@ export default function IdCard() {
                 </div>
               </div>
             ) : (
-              /* NORMAL VIEW */
               <>
                 <div className="px-6 flex justify-center items-center mb-2 mt-3 h-7">
                    <h3 className="text-xs text-gray-800 font-medium">Иргэний үнэмлэх</h3>
                 </div>
                 <div className="w-full aspect-[1.58/1] cursor-pointer [perspective:1200px] mb-6" onClick={() => setIsFlipped(!isFlipped)}>
                   <div className={`relative w-full h-full transition-all duration-700 [transform-style:preserve-3d] ${isFlipped ? '[transform:rotateY(180deg)]' : ''}`}>
+                    
                     {/* FRONT */}
-                    <div className="absolute inset-0 w-full h-full [backface-visibility:hidden] rounded-xl overflow-hidden bg-white shadow-lg">
+                    <div 
+                      className="absolute inset-0 w-full h-full rounded-xl overflow-hidden bg-white shadow-lg"
                       style={{ backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden' }}
+                    >
                       <img src="/card-front.svg" className="absolute inset-0 w-full h-full object-cover" alt="ID Front" />
-                      <div className="relative z-10 p-3 h-full text-black select-none pointer-events-none"style={{ backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden' }}>
+                      <div 
+                        className="relative z-10 p-3 h-full text-black select-none pointer-events-none"
+                        style={{ backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden' }}
+                      >
                         <img src={userInfo.photo} className="absolute object-cover" style={{ top: "26%", left: "3%", width: "23%", height: "57%" }} alt="Profile" />
                         <div className="absolute text-[8.5px]" style={{ top: "27%", left: "30%" }}>{userInfo.surname}</div>
                         <div className="absolute text-[8.5px]" style={{ top: "42%", left: "30%" }}>{userInfo.lastName}</div>
@@ -192,14 +178,26 @@ export default function IdCard() {
                         <div className="absolute text-[8.5px]" style={{ top: "79%", left: "30%" }}>{userInfo.dateOfBirth}</div>
                       </div>
                     </div>
+
                     {/* BACK */}
-                    <div className="absolute inset-0 w-full h-full [backface-visibility:hidden] [transform:rotateY(180deg)] rounded-xl overflow-hidden bg-white shadow-lg">
+                    <div 
+                      className="absolute inset-0 w-full h-full rounded-xl overflow-hidden bg-white shadow-lg"
+                      style={{ 
+                        backfaceVisibility: 'hidden', 
+                        WebkitBackfaceVisibility: 'hidden',
+                        transform: 'rotateY(180deg)' 
+                      }}
+                    >
                       <img src="/card-back.svg" className="absolute inset-0 w-full h-full object-cover" alt="ID Back" />
-                      <div className="relative z-10 p-3 h-full text-black [backface-visibility:hidden]">
+                      <div 
+                        className="relative z-10 p-3 h-full text-black"
+                        style={{ backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden' }}
+                      >
                         <div className="absolute text-[8.5px]" style={{ top: "31%", left: "34%" }}>{userInfo.dateOfIssue}</div>
                         <div className="absolute text-[8.5px]" style={{ top: "42%", left: "34%" }}>{userInfo.dateOfExpiry}</div>
                       </div>
                     </div>
+
                   </div>
                 </div>
                 <div className="w-full max-w-[390px] space-y-2 px-2">
