@@ -157,12 +157,16 @@ export default function IdCard() {
                    <h3 className="text-xs text-gray-800 font-medium">Иргэний үнэмлэх</h3>
                 </div>
                 <div className="w-full aspect-[1.58/1] cursor-pointer [perspective:1200px] mb-6" onClick={() => setIsFlipped(!isFlipped)}>
-                  <div className={`relative w-full h-full transition-all duration-700 [transform-style:preserve-3d] ${isFlipped ? '[transform:rotateY(180deg)]' : ''}`}>
-                    
+                  <div className={`relative w-full h-full duration-700 ease-in-out`}
+                    style={{
+                      transformStyle: 'preserve-3d',
+                      transform: isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)',
+                    }}
+                  >
                     {/* FRONT */}
                     <div 
                       className="absolute inset-0 w-full h-full rounded-xl overflow-hidden bg-white shadow-lg backface-hidden"
-                      style={{ backfaceVisibility: 'hidden', opacity: isFlipped ? 0 : 1, transitionDelay: isFlipped ? '0ms' : '0ms', WebkitBackfaceVisibility: 'hidden' }}
+                      style={{ backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden' }}
                     >
                       <img src="/card-front.svg" className="absolute inset-0 w-full h-full object-cover" alt="ID Front" />
                       <div
@@ -192,7 +196,7 @@ export default function IdCard() {
                     >
                       <img src="/card-back.svg" className="absolute inset-0 w-full h-full object-cover" alt="ID Back" />
                       <div 
-                        className="relative z-10 p-3 h-full text-black"
+                        className="relative z-10 p-3 h-full text-black pointer-events-none"
                         style={{ backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden' }}
                       >
                         <div className="absolute text-[8.5px]" style={{ top: "31%", left: "34%" }}>{userInfo.dateOfIssue}</div>
