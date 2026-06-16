@@ -16,6 +16,12 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   title: "Миний үнэмлэх",
   description: "ID Card application",
+
+  icons: {
+    icon: "/icon.png",
+    apple: "/apple-icon.png",
+  },
+
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
