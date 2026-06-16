@@ -32,8 +32,8 @@ export default function RootLayout({
     <html lang="mn">
       <head>
         {/* iOS-ийн статус барын өнгийг цагаан болгох (эсвэл чиний background-тай ижил) */}
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+        <link rel="icon" type="image/png" href="/favicon.png">
       </head>
       <body className={inter.className}>
         {children}
