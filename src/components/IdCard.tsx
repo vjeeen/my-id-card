@@ -1,5 +1,3 @@
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" href="/favicon.png">
 <div
   className="w-full aspect-[1.58/1] cursor-pointer [perspective:1200px] mb-6"
   onClick={() => setIsFlipped(!isFlipped)}
