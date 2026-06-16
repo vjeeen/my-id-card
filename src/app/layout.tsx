@@ -18,8 +18,7 @@ export const metadata: Metadata = {
   description: "ID Card application",
 
   icons: {
-    icon: "/icon.png",
-    apple: "/apple-icon.png",
+    icon: "/apple-touch-icon.png",
   },
 
   appleWebApp: {
